@@ -1,0 +1,57 @@
+.card {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  .img-wrapper {
+    height: 200px;
+    display: flex;
+    background-color: lightgray;
+    overflow: hidden;
+    img {
+      object-fit: contain;
+      transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .form-control {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.form-select {
+  /* On screens that are 992px or more, set the width to 25% */
+  @media screen and (min-width: 992px) {
+    width: 25%;
+  }
+  /* On screens that are 991px or more, set the width to 50% */
+  @media screen and (max-width: 991px) {
+    width: 50%;
+  }
+  /* On screens that are 600px or more, set the width to 100% */
+  @media screen and (max-width: 425px) {
+    width: 100%;
+  }
+  &:focus {
+    box-shadow: none;
+  }
+}

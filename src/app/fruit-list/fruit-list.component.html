@@ -1,0 +1,66 @@
+<section class="my-md-5 my-3">
+    <div class="container">
+        <h1 class="text-center mb-3">Yebolu Simple Shopping Cart</h1>
+        <!-- category -->
+        <select class="form-select" (change)="selectOption($event)" aria-label="Default select example">
+            <option value="selected" selected>select category</option>
+            <option value="Premium">Premium</option>
+            <option value="Tamilnadu">TamilNadu</option>
+        </select>
+        <div class="row row-cols-1 row-cols-md-3 mt-md-5 mt-3">
+            <div class="col mb-4" *ngFor="let item of fruits;let i= index">
+                <!-- card to list -->
+                <div class="card h-100">
+                    <div class="img-wrapper">
+                        <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            class="card-img-top img-fluid" alt="fruits">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{{item?.p_name}}</h5>
+                        <p class="card-text text-secondary"><b>Category: </b><span *ngIf="!item?.p_category">Not
+                                Avaiable</span>
+                            {{item?.p_category}}</p>
+                        <p class="text-secondary"><b>Details: </b><span *ngIf="!item?.p_details">Not
+                                Avaiable</span>{{item?.p_details}}</p>
+                        <p class="text-secondary"><b>Availability: </b><span
+                                *ngIf="!item?.p_availability"></span>{{item?.p_availability}}</p>
+                        <p class="text-secondary"><b>Cost: </b><span *ngIf="!item?.p_cost"></span>{{item?.p_cost}}</p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend" role="button" (click)="decrementQuantity(i)">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="number" min="0" [(ngModel)]=item.quantity placeholder="0" max="99"
+                                class="form-control text-center" aria-label="quantity">
+                            <div class="input-group-append" role="button" disabled="true"
+                                (click)="incrementQuantity(i)">
+                                <span class="input-group-text">+</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary w-100" (click)="submit(i)">Buy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="fruitSubmit" tabindex="-1" aria-labelledby="fruitSubmit" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fruitSubmit">Yebolu Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5 class="mb-3">{{finalProducts.name}}</h5>
+                <p class="text-secondary"><b>Category </b>{{finalProducts.category}}</p>
+                <p class="text-secondary"><b>Details </b>{{finalProducts.details}}</p>
+                <p class="text-secondary"><b>Total Amount </b>{{finalProducts.totalCost}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary m-auto" data-bs-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
